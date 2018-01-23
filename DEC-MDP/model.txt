@@ -1,0 +1,10 @@
+
+>>> import numpy, mdptoolbox.example
+>>> numpy.random.seed(0) # Needed to get the output below
+>>> P, R = mdptoolbox.example.rand(4, 3)
+
+
+
+mdpObj = tidcmdp(Agents, States, Actions)
+
+mdpObj.
