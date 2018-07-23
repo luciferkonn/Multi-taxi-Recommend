@@ -8,8 +8,8 @@ import decimal
 import time
 
 # Global variables
-osm_file = './data/NewYork.osm'
-db_name = './data/sorted_by_week/nyData_Monday.sqlite'
+osm_file = '../../data/NewYork.osm'
+db_name = '../../data/sorted_by_week/nyData_Sunday.sqlite'
 table_name = 'my_table'
 osm_id, node_id = 'osm_id', 'node_id'
 time_format = '%Y-%m-%d %H:%M:%S'
@@ -78,28 +78,28 @@ for row in cur.execute(sql):
         taxi_number[a_axis][b_axis][c_axis] += 1
 
 # output passenger request to file
-out_pas = open('./data/sorted_by_week/passenger_request', 'w')
+out_pas = open('../../data/sorted_by_week/passenger_request_Sunday', 'w')
 for i in range(100):
     for j in range(100):
         for k in range(25):
             if passenger_number[i][j][k] != 0:
                 # print('[' + str(i) + ']' + '[' + str(j) + ']:' + str(passenger_number[i][j]) )
-                print >> out_pas, "[%d][%d][%d]: %d" % (i, j, k, passenger_number[i][j][k])
+                print >> out_pas, "%d,%d,%d,%d" % (i, j, k, passenger_number[i][j][k])
 out_pas.close()
-out_taxi = open('./data/sorted_by_week/taxi_available', 'w')
+out_taxi = open('../../data/sorted_by_week/taxi_available_Sunday', 'w')
 for i in range(100):
     for j in range(100):
         for k in range(25):
             if taxi_number[i][j][k] != 0:
                 # print('[' + str(i) + ']' + '[' + str(j) + ']:' + str(taxi_number[i][j]) )
-                print >> out_taxi, "[%d][%d][%d]: %d" % (i, j, k, taxi_number[i][j][k])
+                print >> out_taxi, "%d,%d,%d,%d" % (i, j, k, taxi_number[i][j][k])
 out_taxi.close()
 
-out_pr = open('./data/sorted_by_week/pickup_pr', 'w')
+out_pr = open('../../data/sorted_by_week/pickup_pr_Sunday', 'w')
 for i in range(100):
     for j in range(100):
         for k in range(25):
             if passenger_number[i][j][k] > 0 and taxi_number[i][j][k] > 0:
                 # pr[i][j] = passenger_number/taxi_number
-                print >> out_pr, "[%d][%d][%d]: %f" % (i, j, k, passenger_number[i][j][k] / taxi_number[i][j][k])
+                print >> out_pr, "%d,%d,%d,%f" % (i, j, k, passenger_number[i][j][k] / taxi_number[i][j][k])
 out_pr.close()

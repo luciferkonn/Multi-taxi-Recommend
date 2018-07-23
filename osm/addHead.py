@@ -16,8 +16,10 @@ for mon in range(1, 13):
             day = "0" + str(day)
         num += 1
         week = datetime.strptime("2013"+str(mon)+str(day), "%Y%m%d").weekday()
-        toName = './data/sorted/' + str(week) + '_' + str(num) + '.csv'
-        fromName = './data/13_' + str(mon) + '_' + str(day) + '_sorted.csv'
+        # toName = './data/sorted/' + str(week) + '_' + str(num) + '.csv'
+        # fromName = './data/13_' + str(mon) + '_' + str(day) + '_sorted.csv'
+        fromName = '/home/lucifer/Documents/PycharmProjects/EVRouting/osm/13_01_01_sorted.csv'
+        toName = '/home/lucifer/Documents/PycharmProjects/EVRouting/osm/13_01_01_added.csv'
         with open(toName, 'wb') as outcsv:
             writer = csv.writer(outcsv)
             writer.writerow(['taxi_id','driver_id','un1','un2','un5','pickup_time','drop_time',\
